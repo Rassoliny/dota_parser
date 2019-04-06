@@ -2,6 +2,15 @@ import requests
 import json
 import time
 
+def fill_skins_for_withdrawal_list(skins_for_withdrawal):
+
+	withrawal_file = open('../data/withdrawal_list.txt', 'r')
+	for lot in withrawal_file:
+		skins_for_withdrawal.append(lot)
+
+	return skins_for_withdrawal
+
+
 def change_parser():
 
 	skins_old_json = requests.get('https://loot.farm/fullpriceDOTA.json')  
@@ -22,4 +31,9 @@ def change_parser():
 				print()
 
 		skins_old_list = skins_new_list
+
+withdrawal_list = []
+withdrawal_list = fill_skins_for_withdrawal_list(withdrawal_list)
+
+
 
