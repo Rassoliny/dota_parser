@@ -2,6 +2,12 @@ import requests
 import json
 import time
 import os
+import telebot
+from constants import TELE_TOKEN, CHANNEL_ID
+
+
+bot = telebot.TeleBot(TELE_TOKEN)
+
 
 def fill_skins_for_withdrawal_list(skins_for_withdrawal):
 
@@ -20,14 +26,14 @@ def fill_skins_for_withdrawal_list(skins_for_withdrawal):
 def change_parser():
 
 	skins_old_json = requests.get('https://loot.farm/fullpriceDOTA.json')  
-	skins_old_list = json.loads(skins_old_json.content)
+	skins_old_list = json.loads(skins_old_json.text)
 
 	while True:
 
 		time.sleep(60)
 
 		skins_new_json = requests.get('https://loot.farm/fullpriceDOTA.json')
-		skins_new_list = json.loads(skins_new_json.content)
+		skins_new_list = json.loads(skins_new_json.text)
 
 		for old, new in zip(skins_old_list, skins_new_list):
 			if old != new:
@@ -40,10 +46,11 @@ def change_parser():
 
 def withdrawal_parser(withdrawal_list):
 
-	skins_old_json = requests.get('https://loot.farm/fullpriceDOTA.json')  
+	skins_old_json = requests.get('https://loot.farm/fullpriceDOTA.json')
 	skins_old_list = json.loads(skins_old_json.text)
 	ignore_list = []
 	ignore_names = []
+	bot.send_message(CHANNEL_ID, 'bugaga')
 
 	while True:
 
