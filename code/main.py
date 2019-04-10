@@ -39,7 +39,7 @@ def change_parser():
             if old != new:
                 print('Noticed a change!')
                 print(old)
-                print(new,'\n')
+                print(new, '\n')
 
         skins_old_list = skins_new_list
 
@@ -48,7 +48,6 @@ def withdrawal_parser(withdrawal_list):
 
     ignore_list = []
     ignore_names = []
-    bot.send_message(CHANNEL_ID, 'bugaga')
 
     while True:
 
@@ -61,11 +60,11 @@ def withdrawal_parser(withdrawal_list):
                 ((skin['name'] + '\n') not in ignore_names) and \
                     (skin['have'] != 0):
 
-                print('Noticed a desired skin!\n')
-                print(skin,'\n'*4)
-                ignore_list.append({'name' : skin['name'], 'time' : 5})
+                # print('Noticed a desired skin!\n')
+                # print(skin,'\n'*4)
+                ignore_list.append({'name': skin['name'], 'time': 5})
                 ignore_names.append(skin['name'] + '\n')
-
+                bot.send_message(CHANNEL_ID, 'Noticed a desired skin: {}'.format(skin['name']))
                 os.system('say "Noticed a desired skin"')
 
         time.sleep(60)
