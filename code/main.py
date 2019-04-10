@@ -23,7 +23,7 @@ def change_parser():
 	skins_old_list = json.loads(skins_old_json.content)
 
 	while True:
-		
+
 		time.sleep(60)
 
 		skins_new_json = requests.get('https://loot.farm/fullpriceDOTA.json')
@@ -41,14 +41,14 @@ def change_parser():
 def withdrawal_parser(withdrawal_list):
 
 	skins_old_json = requests.get('https://loot.farm/fullpriceDOTA.json')  
-	skins_old_list = json.loads(skins_old_json.content)
+	skins_old_list = json.loads(skins_old_json.text)
 	ignore_list = []
 	ignore_names = []
 
 	while True:
 
 		skins_json = requests.get('https://loot.farm/fullpriceDOTA.json')
-		skins_list = json.loads(skins_json.content)
+		skins_list = json.loads(skins_json.text)
 
 		for skin in skins_list:
 
