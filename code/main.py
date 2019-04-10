@@ -51,6 +51,9 @@ def withdrawal_parser(withdrawal_list):
 
     while True:
 
+        withdrawal_list = []
+        withdrawal_list = fill_skins_for_withdrawal_list(withdrawal_list)
+
         skins_json = requests.get('https://loot.farm/fullpriceDOTA.json')
         skins_list = json.loads(skins_json.text)
 
@@ -65,7 +68,7 @@ def withdrawal_parser(withdrawal_list):
                 ignore_list.append({'name': skin['name'], 'time': 5})
                 ignore_names.append(skin['name'] + '\n')
                 bot.send_message(CHANNEL_ID, 'Noticed a desired skin: {}'.format(skin['name']))
-                os.system('say "Noticed a desired skin"')
+                # os.system('say "Noticed a desired skin"')
 
         time.sleep(60)
 
@@ -79,9 +82,4 @@ def withdrawal_parser(withdrawal_list):
         print(time.ctime(time.time()))
 
 
-withdrawal_list = []
-withdrawal_list = fill_skins_for_withdrawal_list(withdrawal_list)
 withdrawal_parser(withdrawal_list)
-
-
-
