@@ -44,7 +44,7 @@ def change_parser():
         skins_old_list = skins_new_list
 
 
-def withdrawal_parser(withdrawal_list):
+def withdrawal_parser():
 
     ignore_list = []
     ignore_names = []
@@ -82,4 +82,4 @@ def withdrawal_parser(withdrawal_list):
         print(time.ctime(time.time()))
 
 
-withdrawal_parser(withdrawal_list)
+withdrawal_parser()
