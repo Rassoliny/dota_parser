@@ -22,6 +22,12 @@ def receive_message(message):
         with open('../data/withdrawal_list.txt', 'a') as f:
             f.write(skin_name + '\n')
         answer = '{} added to file'.format(skin_name)
+    elif command == 'cat':
+        # send file data
+        answer = ' '
+        with open('../data/withdrawal_list.txt', 'r') as f:
+            for line in f:
+                answer = answer + line + '\n'
 
     else:
         # no command received
